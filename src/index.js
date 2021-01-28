@@ -39,7 +39,7 @@ function* postFavorite(action){
         console.log('in POST favorite', action.payload)
 
     } catch(error){
-        console.log(error posting)
+        console.log(error)
     }
 }
 

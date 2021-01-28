@@ -1,41 +1,45 @@
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+const FavoritesForm = () => {
+  const dispatch = useDispatch();
+  let [favorites, setFavorites] = useState([]);
 
-const FavoritesForm= () =>{
-const dispatch = useDispatch();
-let [searchCategory, setSearchCategory] = useState('');
-let [favorite, setFavorite] = useState('')
-    
+  const favoriteList = useSelector((store) => store.favoriteReducer);
 
-const newCategory = (event) => {
-    event.preventDefault();
-    dispatch({type: 'GET_FAVORITE', payload: favoriteItem})
-}
-const setAsFavorite = (event) =>{
- setFavorite
-}
+  // need to send dispatch to line 18 of index js, getfavorite, favoritereducer on line 88
 
+  useEffect(() => {
+    getFavorites();
+    dispatch({ type: 'GET_FAVORITE' });
+  }, []);
 
+  const getFavorites = () => {
+    console.log('in getfavorites');
+  };
 
-return(
+  return (
     <div>
-        <button onClick={setAsFavorite}>Favorite (heart)</button>
+      <p>in favorites</p>
+      <button>Favorite (heart)</button>
     </div>
-)
+  );
 
-//     return(
-//     <div>
-//         <form onSubmit={newSearch}>
-//             <input type="text" value = {searchCategory} list="chooseGiphy"/>
-//                 <datalist id="chooseGiphy">
-//                 <option value="funny"/>
-//                 <option value="cohort"/>
-//                 <option value="cartoon"/>
-//                 <option value="nsfw"/>
-//                 <option value="meme"/>
-//                 </datalist>
-//                 <button type='Submit'></button>
-//         </form>
-//     </div>
-// )
-}
+  //     return(
+  //     <div>
+  //         <form onSubmit={newSearch}>
+  //             <input type="text" value = {searchCategory} list="chooseGiphy"/>
+  //                 <datalist id="chooseGiphy">
+  //                 <option value="funny"/>
+  //                 <option value="cohort"/>
+  //                 <option value="cartoon"/>
+  //                 <option value="nsfw"/>
+  //                 <option value="meme"/>
+  //                 </datalist>
+  //                 <button type='Submit'></button>
+  //         </form>
+  //     </div>
+  // )
+};
 //map through favorites in database and post a selection
+export default FavoritesForm;

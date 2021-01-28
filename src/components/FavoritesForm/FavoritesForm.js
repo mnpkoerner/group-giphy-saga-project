@@ -1,27 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const FavoritesForm = () => {
   const dispatch = useDispatch();
-  let [favorites, setFavorites] = useState([]);
 
   const favoriteList = useSelector((store) => store.favoriteReducer);
+  const categoryNames = useSelector((store) => store.categoryReducer);
 
   // need to send dispatch to line 18 of index js, getfavorite, favoritereducer on line 88
 
   useEffect(() => {
-    getFavorites();
     dispatch({ type: 'GET_FAVORITE' });
+    dispatch({ type: 'GET_CATEGORY' });
   }, []);
 
-  const getFavorites = () => {
-    console.log('in getfavorites');
+  const handleCategory = () => {
+    // this is where we will send category to saga to server to db
   };
 
   return (
     <div>
       <p>in favorites</p>
-      <button>Favorite (heart)</button>
+      {favoriteList.map((favorite) => (
+        <div>
+          <img
+            src={favorite.url}
+            key={favorite.id}
+            value={favorite.category_id}
+          />
+          <select name="category" onChange={handleCategory}>
+            {categoryNames.map((category) => (
+              <option value={category.id}>{category.name}</option>
+            ))}
+          </select>
+        </div>
+      ))}
     </div>
   );
 

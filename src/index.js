@@ -27,12 +27,14 @@ function* searchGiphy(action) {
     try{
         console.log('in searchGiphy')
         const searchTerm = action.payload
-        const response = yield axios.post('/post', searchTerm)
+        const response = yield axios.get(`/api/search/${searchTerm}`)
+        //array of objects {id: number, url: '', string: 'string url}
         yield put({type: 'SEND_SEARCH_TO_REDUCER', payload: response.data})
     } catch(error){
         console.log(error)
     }
 }
+
 //saga to POST Gifs
 function* postFavorite(action){
     try {

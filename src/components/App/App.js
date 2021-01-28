@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import './App.css';
+import ParentComponent from '../ParentComponent/ParentComponent'
 
 import { HashRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 
@@ -9,14 +10,15 @@ function App(props) {
     <Router>
       <div className="main">
         <Header />
+        <ParentComponent />
         <h1>Giphy Search!</h1>
 
         {/* add components to these routes */}
-        <Route path="/">
+        {/* <Route path="/">
           <Redirect to="/search" />
         </Route>
         <Route path="/search" />
-        <Route path="/favorites" />
+        <Route path="/favorites" /> */}
       </div>
     </Router>
   );

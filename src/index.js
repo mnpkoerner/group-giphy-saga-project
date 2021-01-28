@@ -43,7 +43,7 @@ function* postFavorite(action){
         yield put({type: 'GET_FAVORITE'})
 
     } catch(error){
-        console.log('error posting')
+        console.log(error)
     }
 }
 

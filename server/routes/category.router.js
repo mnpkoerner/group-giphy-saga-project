@@ -4,6 +4,8 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  // debug log to console
+  console.log(`In GET at 'api/category`);
   // return all categories
   const queryText = `SELECT * FROM category ORDER BY name ASC`;
   pool

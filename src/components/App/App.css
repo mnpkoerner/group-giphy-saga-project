@@ -6,6 +6,7 @@ body {
 h1 {
     display: inline;
     padding: 10px;
+    justify-content: center;
 }
 
 .main {
@@ -14,6 +15,7 @@ h1 {
 }
 
 .Header {
+    color: linear-gradient(45deg, #512da8, #9c27b0);
     color: rgb(243, 243, 243);
     min-height: 30px;
     padding: 20px;

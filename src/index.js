@@ -39,6 +39,8 @@ function* searchGiphy(action) {
 function* postFavorite(action){
     try {
         console.log('in POST favorite', action.payload)
+        yield axios.post('/api/favorite', action.payload)
+        yield put({type: 'GET_FAVORITE'})
 
     } catch(error){
         console.log('error posting')

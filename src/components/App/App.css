@@ -1,0 +1,28 @@
+body {
+    background-color: rgb(34, 34, 34);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    display: inline;
+    padding: 10px;
+    justify-content: center;
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.Header {
+    color: linear-gradient(45deg, #512da8, #9c27b0);
+    color: rgb(243, 243, 243);
+    min-height: 30px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.button {
+    margin: 0 auto;
+    padding: 10px;
+}

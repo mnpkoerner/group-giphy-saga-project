@@ -40,4 +40,4 @@ const store = createStore(
 
 sagaMiddleware.run(watcherSaga)
 
-ReactDOM.render(<App />);
+ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

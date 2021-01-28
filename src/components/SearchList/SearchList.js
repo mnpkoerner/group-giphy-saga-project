@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from 'react-redux';
 const SearchList = () =>{
 
 const dispatch = useDispatch();
-const searchReducer = useSelector(store => SOMETHINGREDUCER)
+const searchReducer = useSelector(store => store.SOMETHINGREDUCER)
 
 
 useEffect(() => {

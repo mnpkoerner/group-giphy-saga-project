@@ -4,8 +4,6 @@ const axios = require('axios');
 
 const router = express.Router();
 
-const giphyList = [];
-
 // return all search images
 router.get('/:searchterm', (req, res) => {
     const giphyList = [];

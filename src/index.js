@@ -12,29 +12,98 @@ import logger from 'redux-logger';
 
 //watcherSaga holds all sagas
 function* watcherSaga() {
-    yield takeEvery('TEST', testRoute);
+    //dispatch({type: 'SEARCH_GIPHY', payload: 'string_search_term'})
+    yield takeEvery('SEARCH_GIPHY', searchGiphy)
+    yield takeEvery('POST_FAVORITE', postFavorite)
+    yield takeEvery('GET_FAVORITE', getFavoriteGifs)
+    yield takeEvery('GET_CATEGORY', getCategoryGifs)
 }
 
-function* testRoute(){
-    console.log('in test route')
-    yield put({ type: 'TEST_REDUCE', payload: 'test complete'})
+//sagas
+//saga to POST search to GIPHY api
+//will populate DOM with Gifs the user
+//can store information about in the database
+function* searchGiphy(action) {
+    try{
+        console.log('in searchGiphy')
+        const searchTerm = action.payload
+        const response = yield axios.post('/post', searchTerm)
+        yield put({type: 'SEND_SEARCH_TO_REDUCER', payload: response.data})
+    } catch(error){
+        console.log(error)
+    }
+}
+//saga to POST Gifs
+function* postFavorite(action){
+    try {
+        console.log('in POST favorite', action.payload)
+
+    } catch(error){
+        console.log(error posting)
+    }
+}
+
+
+//saga to GET Gifs by category
+//from our own database
+function* getCategoryGifs() {
+    try{
+        console.log('in getFavoriteGifs saga');
+        const response = yield axios.get('/api/category');
+        //response is an array of objects with all gifs
+        yield put({type: 'SEND_CAT_TO_REDUCER', payload: response.data})
+    }catch(error){
+        console.log(error);
+        alert('error getting GIFs from database')
+    }
+
+}
+//saga to GET Gifs by favorite
+//from our own database
+function* getFavoriteGifs() {
+    try{
+        console.log('in getFavoriteGifs saga');
+        const response = yield axios.get('/api/favorite');
+        //response is an array of objects with all favorites in it
+        //sends to reducers an array of objects
+        yield put({type: 'SEND_FAV_TO_REDUCER', payload: response.data})
+    }catch(error){
+        console.log(error);
+        alert('error getting GIFs from database')
+    }
 }
 
 
 //reducers
-const testReducer = (state = '', action) => {
-    if(action.type === 'TEST_REDUCE'){
-        return state = action.payload
+const searchReducer = (state = [], action) => {
+    if(action.type === 'SEND_SEARCH_TO_REDUCER'){
+        return action.payload
+    }
+    return state;
+}
+//favoriteReducer
+const favoriteReducer = (state = [], action) => {
+    if(action.type === 'SEND_FAV_TO_REDUCER') {
+        return action.payload;
+    }
+    return state;
+}
+
+//categoryReducer
+const categoryReducer = (state = [], action) => {
+    if(action.type === 'SEND_CAT_TO_REDUCER') {
+        return action.payload;
     }
     return state;
 }
 
 
-
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     combineReducers({
-        testReducer
+        categoryReducer,
+        favoriteReducer,
+        searchReducer
     }), applyMiddleware(sagaMiddleware, logger)
 );
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector} from 'react-redux';
 const SearchList = () =>{
 
 const dispatch = useDispatch();
-const searchReducer = useSelector(store => store.SOMETHINGREDUCER)
+const searchReducer = useSelector(store => store.searchReducer)
 
 
 useEffect(() => {
@@ -22,7 +22,7 @@ useEffect(() => {
                         <ul>
                             <li>
                             <p></p>
-                                <img src={searchItem.data?.image_url} width="400" height="300"></img>
+                                <img src={searchItem.url} width="400" height="300"></img>
                             </li>
                         </ul>
                      )

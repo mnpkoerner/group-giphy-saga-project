@@ -16,6 +16,7 @@ const FavoritesForm = () => {
 
   const handleCategory = () => {
     // this is where we will send category to saga to server to db
+    // POST_CATEGORY
     console.log('in handleCategory with id');
     
   };

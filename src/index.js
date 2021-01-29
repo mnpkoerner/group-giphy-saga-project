@@ -60,7 +60,6 @@ function* getCategoryGifs() {
         console.log(error);
         alert('error getting GIFs from database')
     }
-
 }
 //saga to GET Gifs by favorite
 //from our own database

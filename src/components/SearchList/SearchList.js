@@ -41,7 +41,7 @@ let [favoriteItem, setFavoriteItem] = useState(
                         <ul>
                             <li>
                                 <p>{searchItem.data?.title}</p>
-                                <img src={searchItem.url} width="400" height="300"></img>
+                                <img className ='shadow' src={searchItem.url} width="400" height="300"></img>
                                 <button  id ="switch" value="Off" onClick={() => favoriteSwitch(searchItem.data?.title, searchItem.data?.image_url)}>Favorite</button>
                             </li>
                         </ul>

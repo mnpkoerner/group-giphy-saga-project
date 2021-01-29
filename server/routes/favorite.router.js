@@ -37,6 +37,16 @@ router.post('/', (req, res) => {
 // update given favorite with a category id
 router.put('/:favId', (req, res) => {
   // req.body should contain a category_id to add to this favorite image
+  console.log(`In PUT category: favid: ${req.params.favId} category_id: ${req.body.category_id}`);
+  const queryText = `UPDATE "favorite" SET category_id = $1 WHERE id=$2;`;
+  pool.query(queryText, [req.body.category_id, req.params.favId])
+    .then((result) => {
+      console.log(`PUT category ID success.`);
+      res.sendStatus(201);
+    }).catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
   res.sendStatus(200);
 });
 

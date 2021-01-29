@@ -20,7 +20,7 @@ const newSearch = (event) => {
                 value={searchItem} 
                 onChange={(event)=> setSearchItem(event.target.value)} 
                 />
-                <button type='Submit'>Search</button>
+                <button className = 'searchButton' type='Submit'>Search</button>
                 </form>
             </div>
         )

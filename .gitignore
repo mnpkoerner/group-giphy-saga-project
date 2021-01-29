@@ -68,3 +68,10 @@ typings/
 package-lock.json
 
 .vscode/
+
+#ignore GIPHY env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env

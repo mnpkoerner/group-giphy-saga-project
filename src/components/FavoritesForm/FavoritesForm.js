@@ -16,11 +16,12 @@ const FavoritesForm = () => {
 
   const handleCategory = () => {
     // this is where we will send category to saga to server to db
+    console.log('in handleCategory with id');
+    
   };
 
   return (
     <div>
-      <p>in favorites</p>
       {favoriteList.map((favorite) => (
         <div>
           <img

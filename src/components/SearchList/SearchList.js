@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector, useState} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { useState } from 'react';
 
 const SearchList = () =>{
 
@@ -18,7 +19,7 @@ let [favoriteItem, setFavoriteItem] = useState(
 //         dispatch({type:'NULL'})
 //     }, []); 
 
-    favoriteSwitch = (url, title) =>{
+    const favoriteSwitch = (url, title) =>{
         currentValue = document.getElementById ('switch').value;
         if(currentValue == "Off") { 
              document.getElementById('switch').value="On" 
@@ -40,7 +41,7 @@ let [favoriteItem, setFavoriteItem] = useState(
                         <ul>
                             <li>
                                 <p>{searchItem.data?.title}</p>
-                                <img src={searchItem.data?.image_url} width="400" height="300"></img>
+                                <img src={searchItem.url} width="400" height="300"></img>
                                 <button  id ="switch" value="Off" onClick={() => favoriteSwitch(searchItem.data?.title, searchItem.data?.image_url)}>Favorite</button>
                             </li>
                         </ul>

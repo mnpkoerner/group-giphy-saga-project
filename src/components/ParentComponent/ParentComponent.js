@@ -1,15 +1,18 @@
 import React from 'react';
 import { HashRouter as Router, Route, Redirect, Link } from 'react-router-dom';
-import FavoritesForm from '../FavoritesForm/FavoritesForm'
-import SearchForm from '../SearchForm/SearchForm'
-import SearchList from '../SearchList/SearchList'
+import FavoritesForm from '../FavoritesForm/FavoritesForm';
+import SearchForm from '../SearchForm/SearchForm';
+import SearchList from '../SearchList/SearchList';
+import Header from '../Header/Header'
+
 // needs imports from all children components
 function ParentComponent() {
   //this component will hold the other components to keep the App.js clean
-console.log('in parent component')
+  console.log('in parent component');
   return (
     <Router>
       <div>
+        <Header />
         <Route path="/">
           <Redirect to="/search" />
         </Route>

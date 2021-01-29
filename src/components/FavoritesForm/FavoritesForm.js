@@ -20,7 +20,7 @@ const FavoritesForm = () => {
 
   return (
     <div>
-      <p>in favorites</p>
+      <h2>Search Results</h2>
       {favoriteList.map((favorite) => (
         <div>
           <img

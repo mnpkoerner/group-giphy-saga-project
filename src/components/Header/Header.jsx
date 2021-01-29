@@ -62,7 +62,7 @@ function Header() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box border={2} borderRadius={8} color={'linear-gradient(45deg, #512da8, #9c27b0);'}>
+      <Box border={2} borderRadius={2} color={'linear-gradient(45deg, #512da8, #9c27b0);'}>
         <header className="Header">
           <h1>YOUR GIPHY</h1>
           <Button

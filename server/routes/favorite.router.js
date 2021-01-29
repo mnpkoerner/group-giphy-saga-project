@@ -17,11 +17,13 @@ router.get('/', (req, res) => {
 
 // add a new favorite
 router.post('/', (req, res) => {
-  const newFavorite = req.body
+  console.log(`In favorite POST: URL: ${req.body.url} Title: ${req.body.title}`);
+  const newFavorite = req.body;
   const queryText =`
     INSERT INTO "favorite" ("url", "title")
-    VALUES ($1. $2);
-  `
+    VALUES ($1, $2);
+  `;
+
   pool.query(queryText, [newFavorite.url, newFavorite.title])
   .then((response)=>{
     console.log(response)

@@ -14,12 +14,12 @@ console.log('in parent component')
           <Redirect to="/search" />
         </Route>
         <Route path="/search">
-          {/* <SearchForm />
-          <SearchList /> */}
+          <SearchForm />
+          <SearchList />
         </Route>
 
         <Route path="/favorites">
-          {/* <FavoritesList /> */}
+          {/*<FavoritesList />*/}
           <FavoritesForm />
         </Route>
 

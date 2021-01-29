@@ -1,21 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 const FavoritesForm = () => {
   const dispatch = useDispatch();
-
   const favoriteList = useSelector((store) => store.favoriteReducer);
   const categoryNames = useSelector((store) => store.categoryReducer);
-
-  // need to send dispatch to line 18 of index js, getfavorite, favoritereducer on line 88
+  const [currentCat, setCurrentCat] = useState(0);
 
   useEffect(() => {
     dispatch({ type: 'GET_FAVORITE' });
     dispatch({ type: 'GET_CATEGORY' });
   }, []);
 
-  const handleCategory = () => {
+  const handleCategory = (id) => {
     // this is where we will send category to saga to server to db
+    const newFave = {
+        category_id: Number(currentCat),
+        favorite_id: Number(id)
+    }
+    console.log(newFave);
+    dispatch({type: 'PUT_CATEGORY', payload: newFave})
   };
 
   return (
@@ -28,31 +32,20 @@ const FavoritesForm = () => {
             key={favorite.id}
             value={favorite.category_id}
           />
-          <select name="category" onChange={handleCategory}>
+          <select
+            name="category"
+            onChange={(event) => setCurrentCat(event.target.value)}
+          >
             {categoryNames.map((category) => (
               <option value={category.id}>{category.name}</option>
             ))}
           </select>
+          <button onClick={() => {handleCategory(favorite.id)}}>Change Category</button>
+          <h5>Category: {favorite.category_id}</h5>
         </div>
       ))}
     </div>
   );
-
-  //     return(
-  //     <div>
-  //         <form onSubmit={newSearch}>
-  //             <input type="text" value = {searchCategory} list="chooseGiphy"/>
-  //                 <datalist id="chooseGiphy">
-  //                 <option value="funny"/>
-  //                 <option value="cohort"/>
-  //                 <option value="cartoon"/>
-  //                 <option value="nsfw"/>
-  //                 <option value="meme"/>
-  //                 </datalist>
-  //                 <button type='Submit'></button>
-  //         </form>
-  //     </div>
-  // )
 };
 //map through favorites in database and post a selection
 export default FavoritesForm;

@@ -6,12 +6,22 @@ const SearchList = () =>{
 const dispatch = useDispatch();
 const searchReducer = useSelector(store => store.searchReducer)
 
+const addFavorite = (url, title) => {
+    console.log(url, title)
+    const newFavorite = {
+        url: url,
+        title: title,
+    }
+    console.log(newFavorite)
+    dispatch({type: 'POST_FAVORITE', payload: newFavorite})
+}
+
 
 useEffect(() => {
         console.log('component did mount');
         // dispatch an action to request the search items from api
         dispatch({type:'NULL'})
-    }, []); 
+    }, []);
 
 
         return(
@@ -21,8 +31,10 @@ useEffect(() => {
                      return(
                         <ul>
                             <li>
-                            <p></p>
+                            <div className="searchContainer">
                                 <img src={searchItem.url} width="400" height="300"></img>
+                                <button onClick={()=>addFavorite(searchItem.url, searchItem.title)}>FAVORITE</button>
+                                </div>
                             </li>
                         </ul>
                      )

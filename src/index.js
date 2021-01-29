@@ -17,19 +17,34 @@ function* watcherSaga() {
     yield takeEvery('POST_FAVORITE', postFavorite)
     yield takeEvery('GET_FAVORITE', getFavoriteGifs)
     yield takeEvery('GET_CATEGORY', getCategoryGifs)
+    yield takeEvery('PUT_CATEGORY', putCategoryGifs)
 }
 
 //sagas
 //saga to POST search to GIPHY api
 //will populate DOM with Gifs the user
 //can store information about in the database
+function* putCategoryGifs(action) {
+    try{
+        console.log('in putCategoryGifs with payload:', action.payload);
+        yield axios.put(`/api/favorite/${action.payload.favorite_id}`, action.payload)
+        yield put({type: 'GET_FAVORITE'})
+    } catch(error){
+        console.log(error)
+    }
+}
+// favorite_id
+// category_id
+
+
 function* searchGiphy(action) {
     try{
         console.log('in searchGiphy')
         const searchTerm = action.payload
         const response = yield axios.get(`/api/search/${searchTerm}`)
         //array of objects {id: number, url: '', string: 'string url}
-        yield put({type: 'SEND_SEARCH_TO_REDUCER', payload: response.data})
+        const response = yield put({type: 'SEND_SEARCH_TO_REDUCER', payload: response.data})
+
     } catch(error){
         console.log(error)
     }

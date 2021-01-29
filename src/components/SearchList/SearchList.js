@@ -44,7 +44,7 @@ useEffect(() => {
 
                                 <p>{searchItem.data?.title}</p>
                                 <img className ='shadow' src={searchItem.url} width="400" height="300"></img>
-                                {isVisible? <button  onClick={() => addFavorite(searchItem.title, searchItem.url)}>Favorite</button> : <span>Favorite</span>}
+                                {isVisible? <button  onClick={() => addFavorite(searchItem.url, searchItem.title)}>Favorite</button> : <span>Favorite</span>}
 
                             </p>
                         </div>

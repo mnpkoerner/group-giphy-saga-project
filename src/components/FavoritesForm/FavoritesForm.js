@@ -26,8 +26,8 @@ const FavoritesForm = () => {
     <div>
       <h2>Search Results</h2>
       {favoriteList.map((favorite) => (
-        <div>
-          <img
+        <div className = 'searchContainer'>
+          <img className ='shadow'
             src={favorite.url}
             key={favorite.id}
             value={favorite.category_id}

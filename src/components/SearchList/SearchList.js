@@ -52,15 +52,15 @@ useEffect(() => {
                 <h2>Search Results</h2>
                  {searchReducer.map((searchItem) =>{
                      return(
-                        <ul>
-                            <li>
+                        <div className = 'searchContainer'>
+                            <p>
 
                                 <p>{searchItem.data?.title}</p>
                                 <img className ='shadow' src={searchItem.url} width="400" height="300"></img>
                                 <button  id ="switch" value="Off" onClick={() => favoriteSwitch(searchItem.data?.title, searchItem.data?.image_url)}>Favorite</button>
 
-                            </li>
-                        </ul>
+                            </p>
+                        </div>
                      )
                  })}
             </div>

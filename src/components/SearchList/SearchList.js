@@ -27,7 +27,7 @@ let [favoriteItem, setFavoriteItem] = useState(
                 title:title
                 })
              console.log("item sent to favorites", favoriteItem);  
-             dispatch({ type:'SEARCH_GIPHY', payload: favoriteItem})
+             dispatch({ type:'POST_FAVORITE', payload: favoriteItem})
         }else{
         document.getElementById('switch').value="Off";
         }

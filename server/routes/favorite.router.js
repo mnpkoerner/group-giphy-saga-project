@@ -5,7 +5,7 @@ const router = express.Router();
 
 // return all favorite images
 router.get('/', (req, res) => {
-  const queryText = `SELECT * FROM "favorite"`
+  const queryText = `SELECT * FROM "favorite" ORDER BY "id";`;
   pool.query(queryText)
     .then((result) => {
       res.send(result.rows)
@@ -47,7 +47,6 @@ router.put('/:favId', (req, res) => {
       console.error(error);
       res.sendStatus(500);
     });
-  res.sendStatus(200);
 });
 
 // delete a favorite

@@ -14,11 +14,6 @@ function App(props) {
         <h1>Giphy Search!</h1>
 
         {/* add components to these routes */}
-        {/* <Route path="/">
-          <Redirect to="/search" />
-        </Route>
-        <Route path="/search" />
-        <Route path="/favorites" /> */}
       </div>
     </Router>
   );

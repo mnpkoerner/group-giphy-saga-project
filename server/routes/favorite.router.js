@@ -47,7 +47,6 @@ router.put('/:favId', (req, res) => {
       console.error(error);
       res.sendStatus(500);
     });
-  res.sendStatus(200);
 });
 
 // delete a favorite

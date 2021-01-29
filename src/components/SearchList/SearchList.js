@@ -31,22 +31,9 @@ useEffect(() => {
 //         console.log('component did mount');
 //         // dispatch an action to request the search items from api
 //         dispatch({type:'NULL'})
-//     }, []); 
+//     }, []);
 
-    const favoriteSwitch = (url, title) =>{
-        currentValue = document.getElementById ('switch').value;
-        if(currentValue == "Off") { 
-             document.getElementById('switch').value="On" 
-            setFavoriteItem({
-                url:url,
-                title:title
-                })
-             console.log("item sent to favorites", favoriteItem);  
-             dispatch({ type:'POST_FAVORITE', payload: favoriteItem})
-        }else{
-        document.getElementById('switch').value="Off";
-        }
-    }
+
         return(
             <div>
                 <h2>Search Results</h2>
@@ -57,7 +44,7 @@ useEffect(() => {
 
                                 <p>{searchItem.data?.title}</p>
                                 <img className ='shadow' src={searchItem.url} width="400" height="300"></img>
-                                <button  id ="switch" value="Off" onClick={() => favoriteSwitch(searchItem.data?.title, searchItem.data?.image_url)}>Favorite</button>
+                                {isVisible? <button  onClick={() => addFavorite(searchItem.title, searchItem.url)}>Favorite</button> : <span>Favorite</span>}
 
                             </p>
                         </div>
